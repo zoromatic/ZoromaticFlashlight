@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Zoromatic Фонарик</string>
+    <string name="action_settings">Настройки</string>
+    <string name="turn_flashlight_on">Включить фонарик</string>
+    <string name="turn_flashlight_off">Выключить фонарик</string>
+    <string name="strobefrequency">Частота мигания</string>
+    <!-- <string name="lowfrequency">Низкая</string> -->
+    <string name="lowfrequency">0Hz</string>
+    <!-- <string name="highfrequency">Высокая</string> -->
+    <string name="highfrequency">20Hz</string>
+    <string name="nocamera">Нет камеры</string>
+    <string name="cameranotsupported">Камера не поддерживается.</string>
+    <string name="noflash">Без вспышки</string>
+    <string name="flashnotsupported">Вспышка не поддерживается.</string>
+    <string name="notavailable">Недоступна</string>
+    <string name="flashnotavailable">Вспышка недоступна.</string>
+    <string name="selecttheme">Выберите тему</string>
+    <string name="apptheme">Тема</string>
+	<string name="label_system">Система</string>
+    <string name="label_dark">Темная</string>
+    <string name="label_light">Светлая</string>
+    <string name="selectorientation">Выберите положение</string>
+    <string name="apporientation">Положение</string>
+    <string name="label_sens">Датчик</string>
+    <string name="label_port">Портрет</string>
+    <string name="label_land">Пейзаж</string>
+    <string name="keepflashlightactive">Продолжать фонарик в фоновом режиме</string>
+    <string name="keepactive">Продолжать фонарик</string>
+    <string name="turnoff">Выключить фонарик</string>
+    <string name="tapopen">Нажмите, чтобы открыть</string>
+    <string name="turnononopen">Включить фонарик автоматически</string>
+    <string name="turnon">Включить автоматически</string>
+    <string name="donotturnon">Не включить автоматически</string>
+    <string name="keeplaststrobefreq">Помнить последнюю частоту мигания</string>
+    <string name="keepstrobefreq">Помнить частоту мигания</string>
+    <string name="donotkeepstrobefreq">Не помнить частоту мигания</string>
+    <string name="drawer_open">Открыть</string>
+    <string name="drawer_close">Закрыть</string>
+    <string name="selectlanguage">Выберите язык</string>
+	<string name="language">Язык</string>
+	<string name="selectcolorscheme">Выберите цветовую схему приложения</string>
+	<string name="appcolortheme">Главная цветовая схема</string>
+	
+    <string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+    <string name="skip_button_label">Skip</string>
+    
+    <string name="asb_switch_on">ON</string>
+    <string name="asb_switch_off">OFF</string>
+    
+    <string name="black">Черный</string>
+   	<string name="white">Белый</string>
+   	<string name="red">Красный</string>
+    <string name="pink">Розовый</string>
+    <string name="purple">Фиолетовый</string>
+    <string name="deep_purple">Темно-фиолетовый</string>
+    <string name="indigo">Индиго</string>
+    <string name="blue">Синий</string>
+    <string name="light_blue">Светло-синий</string>
+    <string name="cyan">Голубой</string>
+    <string name="teal">Чирок</string>
+    <string name="green">Зеленый</string>
+    <string name="light_green">Светло-зеленый</string>
+    <string name="lime">Липовый</string>
+    <string name="yellow">Желтый</string>
+    <string name="amber">Янтарный</string>
+    <string name="orange">Оранжевый</string>
+    <string name="deep_orange">Темно-оранжевый</string>
+    <string name="brown">Коричневый</string>
+    <string name="grey">Серый</string>
+    <string name="blue_grey">Синий-серый</string>
+    
+</resources>

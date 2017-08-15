@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AlertDialogDark" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">?attr/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AlertDialogLight" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
+        <item name="colorAccent">?attr/colorPrimaryDark</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="ToolbarLightBlack" parent="Widget.AppCompat.Toolbar">
+        <item name="android:gravity">left|fill_vertical</item>
+        <item name="android:textColorPrimary">@color/sysBlack</item>
+        <item name="actionMenuTextColor">@color/sysBlack</item>
+        <item name="android:textColorSecondary">@color/sysBlack</item>
+        <item name="actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+        <item name="selectableItemBackground">@drawable/background_control_borderless</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+        </item>
+    </style>
+
+    <style name="ToolbarLight" parent="Widget.AppCompat.Toolbar">
+        <item name="android:gravity">left|fill_vertical</item>
+        <item name="android:textColorPrimary">@color/sysWhite</item>
+        <item name="actionMenuTextColor">@color/sysWhite</item>
+        <item name="android:textColorSecondary">@color/sysWhite</item>
+        <item name="actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+        <item name="selectableItemBackground">@drawable/background_control_borderless</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+        </item>
+    </style>
+
+    <style name="ToolbarDark" parent="Widget.AppCompat.Toolbar">
+        <item name="android:gravity">left|fill_vertical</item>
+        <item name="android:textColorPrimary">@color/sysWhite</item>
+        <item name="actionMenuTextColor">@color/sysWhite</item>
+        <item name="android:textColorSecondary">@color/sysWhite</item>
+        <item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+        <item name="selectableItemBackground">@drawable/background_control_borderless</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+        </item>
+    </style>
+
+    <style name="ThemeLight" parent="ThemeLightBasic">
+        <item name="android:alertDialogTheme">@style/AlertDialogLight</item>
+    </style>
+
+    <style name="ThemeDark" parent="ThemeDarkBasic">
+        <item name="android:alertDialogTheme">@style/AlertDialogDark</item>
+    </style>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:widgets="http://schemas.android.com/apk/res/com.zoromatic.flashlight"
+    android:key="com.zoromatic.flashlight.Preferences" >
+
+    <!-- <PreferenceCategory android:title="@string/action_settings" > -->
+        <com.zoromatic.flashlight.ImageListPreference
+            android:defaultValue="0"
+            android:entries="@array/themeArray"
+            android:entryValues="@array/themeValues"
+            android:key="theme_"
+            android:summary="@string/selecttheme"
+            android:title="@string/apptheme" />
+        <com.zoromatic.flashlight.ImageListPreference
+            android:defaultValue="0"
+            android:entries="@array/colorSchemeArray"
+            android:entryValues="@array/colorSchemeValues"
+            android:key="colorscheme_"
+            android:summary="@string/selectcolorscheme"
+            android:title="@string/appcolortheme"
+            widgets:entryColorSchemes="@array/colorSchemeColorValues" />
+        <com.zoromatic.flashlight.ImageListPreference
+            android:defaultValue="0"
+            android:entries="@array/orientationArray"
+            android:entryValues="@array/orientationValues"
+            android:key="orientation_"
+            android:summary="@string/selectorientation"
+            android:title="@string/apporientation" />
+        <com.zoromatic.flashlight.ImageListPreference
+            android:defaultValue="0"
+            android:entries="@array/languageArray"
+            android:entryValues="@array/languageValues"
+            android:key="languageoptions_"
+            android:summary="@string/selectlanguage"
+            android:title="@string/language" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="turnononopen_"
+            android:summary="@string/turnon"
+            android:title="@string/turnononopen" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="keepstrobefreq_"
+            android:summary="@string/keepstrobefreq"
+            android:title="@string/keeplaststrobefreq" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="keepactive_"
+            android:summary="@string/keepactive"
+            android:title="@string/keepflashlightactive" />
+
+    <Preference android:title="@string/privacy_policy" >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="http://zoromaticsoftware.blogspot.com/p/zoromatic.html" />
+    </Preference>
+    <!-- </PreferenceCategory> -->
+
+</PreferenceScreen>

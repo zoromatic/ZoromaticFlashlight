@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themeArray">
+		<item>@string/label_light</item>
+        <item>@string/label_dark</item>        
+    </string-array>
+    <string-array name="themeValues">
+        <item>light</item>
+        <item>dark</item>               
+    </string-array>
+    <string-array name="orientationArray">
+		<item>@string/label_sens</item> 
+		<item>@string/label_port</item>
+        <item>@string/label_land</item>        
+    </string-array>
+    <string-array name="orientationValues">
+        <item>sens</item>
+        <item>port</item>
+        <item>land</item>               
+    </string-array>
+    
+    <string-array name="languageArray">
+        <item>English</item>
+        <item>Español</item>
+        <item>Русский</item>
+    </string-array>
+    <string-array name="languageValues">
+        <item>en</item>
+        <item>es</item>
+        <item>ru</item>                
+    </string-array>
+    <string-array name="colorSchemeArray">
+		<item>@string/black</item>
+		<item>@string/white</item>
+		<item>@string/red</item>
+	    <item>@string/pink</item>
+	    <item>@string/purple</item>
+	    <item>@string/deep_purple</item>
+	    <item>@string/indigo</item>
+	    <item>@string/blue</item>
+	    <item>@string/light_blue</item>
+	    <item>@string/cyan</item>
+	    <item>@string/teal</item>
+	    <item>@string/green</item>
+	    <item>@string/light_green</item>
+	    <item>@string/lime</item>
+	    <item>@string/yellow</item>
+	    <item>@string/amber</item>
+	    <item>@string/orange</item>
+	    <item>@string/deep_orange</item>
+	    <item>@string/brown</item>
+	    <item>@string/grey</item>
+	    <item>@string/blue_grey</item>        
+    </string-array>
+    <string-array name="colorSchemeValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>               
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <array name="colorSchemeColorValues">
+        <item>color/sysBlack</item>
+		<item>color/sysWhite</item>
+	    <item>color/md_red_500</item>
+	    <item>color/md_pink_500</item>
+	    <item>color/md_purple_500</item>
+	    <item>color/md_deep_purple_500</item>
+	    <item>color/md_indigo_500</item>
+	    <item>color/md_blue_500</item>
+	    <item>color/md_light_blue_500</item>
+	    <item>color/md_cyan_500</item>
+	    <item>color/md_teal_500</item>
+	    <item>color/md_green_500</item>
+	    <item>color/md_light_green_500</item>
+	    <item>color/md_lime_500</item>
+	    <item>color/md_yellow_500</item>
+	    <item>color/md_amber_500</item>
+	    <item>color/md_orange_500</item>
+	    <item>color/md_deep_orange_500</item>
+	    <item>color/md_brown_500</item>
+	    <item>color/md_grey_500</item>
+	    <item>color/md_blue_grey_500</item>
+	</array>
+</resources>

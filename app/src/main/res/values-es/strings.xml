@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Zoromatic Linterna</string>
+    <string name="action_settings">Configuración</string>
+    <string name="turn_flashlight_on">Encienda la linterna</string>
+    <string name="turn_flashlight_off">Apague la linterna</string>
+    <string name="strobefrequency">Frecuencia de parpadeo</string>
+    <!-- <string name="lowfrequency">Baja</string> -->
+    <string name="lowfrequency">0Hz</string>
+    <!-- <string name="highfrequency">Alta</string> -->
+    <string name="highfrequency">20Hz</string>
+    <string name="nocamera">No Cámara</string>
+    <string name="cameranotsupported">La cámara no está soportada.</string>
+    <string name="noflash">No Flash</string>
+    <string name="flashnotsupported">El flash no está soportado.</string>
+    <string name="notavailable">No disponible</string>
+    <string name="flashnotavailable">El flash no está disponible.</string>
+    <string name="selecttheme">Seleccione tema</string>
+    <string name="apptheme">Tema</string>
+	<string name="label_system">Sistema</string>
+    <string name="label_dark">Oscura</string>
+    <string name="label_light">Clara</string>
+    <string name="selectorientation">Seleccione orientación</string>
+    <string name="apporientation">Orientación</string>
+    <string name="label_sens">Sensor</string>
+    <string name="label_port">Retrato</string>
+    <string name="label_land">Paisaje</string>
+    <string name="keepflashlightactive">Mantenga linterna en el fondo</string>
+    <string name="keepactive">Mantenga linterna</string>
+    <string name="turnoff">Apague linterna</string>
+    <string name="tapopen">Toque para abrir</string>
+    <string name="turnononopen">Apague linterna automáticamente</string>
+    <string name="turnon">Apague automáticamente</string>
+    <string name="donotturnon">No apague automáticamente</string>
+    <string name="keeplaststrobefreq">Recuerde última frecuencia de parpadeo</string>
+    <string name="keepstrobefreq">Recuerde frecuencia de parpadeo</string>
+    <string name="donotkeepstrobefreq">No recuerde frecuencia de parpadeo</string>
+    <string name="drawer_open">Abrir</string>
+    <string name="drawer_close">Cerrar</string>
+    <string name="selectlanguage">Seleccione idioma</string>
+	<string name="language">Idioma</string>
+	<string name="selectcolorscheme">Seleccione el esquema de color de la aplicación</string>
+	<string name="appcolortheme">Esquema de color principal</string>
+    
+    <string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+    <string name="skip_button_label">Skip</string>
+    
+    <string name="asb_switch_on">ON</string>
+    <string name="asb_switch_off">OFF</string>
+    
+    <string name="black">Negro</string>
+   	<string name="white">Blanco</string>
+   	<string name="red">Rojo</string>
+    <string name="pink">Roso</string>
+    <string name="purple">Púrpura</string>
+    <string name="deep_purple">Púrpura oscuro</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">Azul</string>
+    <string name="light_blue">Azul Claro</string>
+    <string name="cyan">Cian</string>
+    <string name="teal">Verde azulado</string>
+    <string name="green">Verde</string>
+    <string name="light_green">Verde Claro</string>
+    <string name="lime">Cal</string>
+    <string name="yellow">Amarillo</string>
+    <string name="amber">Ámbar</string>
+    <string name="orange">Naranjo</string>
+    <string name="deep_orange">Naranjo oscuro</string>
+    <string name="brown">Marrón</string>
+    <string name="grey">Gris</string>
+    <string name="blue_grey">Gris azulado</string>
+    
+</resources>

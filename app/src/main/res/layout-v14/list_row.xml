@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:layout_margin="0dp"
+	android:padding="2dp">
+	
+	<ImageView
+        android:id="@+id/listicon"
+        android:layout_width="?android:attr/listPreferredItemHeightSmall"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:contentDescription="@string/action_settings"
+        android:src="@drawable/settings" />
+	
+	<TextView android:id="@+id/listlabel"
+	    android:layout_width="match_parent"
+	    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+	    android:layout_toRightOf="@id/listicon"	    
+	    android:layout_marginLeft="4dp"
+	    android:gravity="center_vertical"
+	    android:text="@string/action_settings"
+		android:textSize="20sp"/>
+	
+</RelativeLayout>
+

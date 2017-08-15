@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Zoromatic Flashlight</string>
+    <string name="action_settings">Settings</string>
+    <string name="turn_flashlight_on">Turn Flashlight On</string>
+    <string name="turn_flashlight_off">Turn Flashlight Off</string>
+    <string name="strobefrequency">Strobe Frequency</string>
+    <!-- <string name="lowfrequency">Low</string> -->
+    <string name="lowfrequency">0Hz</string>
+    <!-- <string name="highfrequency">High</string> -->
+    <string name="highfrequency">20Hz</string>
+    <string name="nocamera">No Camera</string>
+    <string name="cameranotsupported">Camera is not supported.</string>
+    <string name="noflash">No Flash</string>
+    <string name="flashnotsupported">Flash is not supported.</string>
+    <string name="notavailable">Not available</string>
+    <string name="flashnotavailable">Flash is not available.</string>
+    <string name="selecttheme">Select Theme</string>
+    <string name="apptheme">Theme</string>
+    <string name="label_system">System</string>
+    <string name="label_dark">Dark</string>
+    <string name="label_light">Light</string>
+    <string name="selectorientation">Select Orientation</string>
+    <string name="apporientation">Orientation</string>
+    <string name="label_sens">Sensor</string>
+    <string name="label_port">Portrait</string>
+    <string name="label_land">Landscape</string>
+    <string name="keepflashlightactive">Keep on while in background</string>
+    <string name="keepactive">Keep on</string>
+    <string name="turnoff">Turn off</string>
+    <string name="tapopen">Tap to open</string>
+    <string name="turnononopen">Turn on automatically</string>
+    <string name="turnon">Turn on automatically</string>
+    <string name="donotturnon">Do not turn on automatically</string>
+    <string name="keeplaststrobefreq">Remember last strobe frequency</string>
+    <string name="keepstrobefreq">Remember strobe frequency</string>
+    <string name="donotkeepstrobefreq">Do not remember strobe frequency</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="selectlanguage">Select language</string>
+	<string name="language">Language</string>
+	<string name="selectcolorscheme">Select application color scheme</string>
+	<string name="appcolortheme">Main Color Scheme</string>
+    
+    <string name="back_button_label">Back</string>
+    <string name="next_button_label">Next</string>
+    <string name="skip_button_label">Skip</string>
+    
+    <string name="asb_switch_on">ON</string>
+    <string name="asb_switch_off">OFF</string>
+    
+    <string name="black">Black</string>
+   	<string name="white">White</string>
+   	<string name="red">Red</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
+    <string name="deep_purple">Deep Purple</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">Blue</string>
+    <string name="light_blue">Light Blue</string>
+    <string name="cyan">Cyan</string>
+    <string name="teal">Teal</string>
+    <string name="green">Green</string>
+    <string name="light_green">Light Green</string>
+    <string name="lime">Lime</string>
+    <string name="yellow">Yellow</string>
+    <string name="amber">Amber</string>
+    <string name="orange">Orange</string>
+    <string name="deep_orange">Deep Orange</string>
+    <string name="brown">Brown</string>
+    <string name="grey">Grey</string>
+    <string name="blue_grey">Blue Grey</string>
+
+    <string name="title_activity_set_permissions">SetPermissions</string>
+    <string name="permission_request">Permissions request.</string>
+    <string name="permission_needed_camera">Permissions needed to access camera for turning flashlight on and off.</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+
+</resources>

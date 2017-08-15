@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="asb_Preference.SwitchPreference" parent="">
+		<item name="android:layout">@layout/preference</item>
+		<item name="android:widgetLayout">@layout/preference_widget_switch</item>
+		<item name="asb_switchTextOn">@string/asb_switch_on</item>
+		<item name="asb_switchTextOff">@string/asb_switch_off</item>
+	</style>
+
+	<style name="shadoweffect">
+		<item name="android:shadowColor">#000000</item>
+		<item name="android:shadowDx">2</item>
+		<item name="android:shadowDy">2</item>
+		<item name="android:shadowRadius">2</item>
+	</style>
+
+	<style name="Widget.TextView.ListSeparator" parent="@android:style/Widget.TextView">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:paddingTop">2dp</item>
+		<item name="android:paddingBottom">2dp</item>
+		<item name="android:paddingLeft">8dp</item>
+		<item name="android:allowSingleTap">true</item>
+	</style>
+
+	<style name="PreferenceListHeaderDark" parent="Widget.TextView.ListSeparator">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textColorSecondary">@android:color/white</item>
+	</style>
+
+	<style name="PreferenceListHeaderLight" parent="Widget.TextView.ListSeparator">
+		<item name="android:textColor">@android:color/black</item>
+		<item name="android:textColorSecondary">@android:color/black</item>
+	</style>
+
+	<style name="DrawerArrowStyleDark" parent="Widget.AppCompat.DrawerArrowToggle">
+		<item name="spinBars">true</item>
+		<item name="color">@android:color/white</item>
+	</style>
+
+	<style name="DrawerArrowStyleLight" parent="Widget.AppCompat.DrawerArrowToggle">
+		<item name="spinBars">true</item>
+		<item name="color">@android:color/black</item>
+	</style>
+
+	<style name="AlertDialogStyleDark">
+		<item name="android:fullDark">?attr/colorPrimaryDark</item>
+		<item name="android:topDark">?attr/colorPrimaryDark</item>
+		<item name="android:centerDark">@android:color/black</item>
+		<item name="android:bottomDark">@android:color/black</item>
+		<item name="android:fullBright">?attr/colorPrimaryDark</item>
+		<item name="android:topBright">?attr/colorPrimaryDark</item>
+		<item name="android:centerBright">@android:color/black</item>
+		<item name="android:bottomBright">@android:color/black</item>
+		<item name="android:bottomMedium">@android:color/black</item>
+		<item name="android:centerMedium">@android:color/black</item>
+	</style>
+
+	<style name="AlertDialogStyleLight">
+		<item name="android:fullDark">?attr/colorPrimary</item>
+		<item name="android:topDark">?attr/colorPrimary</item>
+		<item name="android:centerDark">@android:color/white</item>
+		<item name="android:bottomDark">@android:color/white</item>
+		<item name="android:fullBright">?attr/colorPrimary</item>
+		<item name="android:topBright">?attr/colorPrimary</item>
+		<item name="android:centerBright">@android:color/white</item>
+		<item name="android:bottomBright">@android:color/white</item>
+		<item name="android:bottomMedium">@android:color/white</item>
+		<item name="android:centerMedium">@android:color/white</item>
+	</style>
+
+	<style name="MaterialCheckBox" parent="android:Widget.CompoundButton.CheckBox">
+		<item name="android:button">@drawable/abc_btn_check_material</item>
+		<item name="android:checkMark">?android:attr/listChoiceIndicatorMultiple</item>
+	</style>
+
+	<style name="MaterialRadioButton" parent="android:Widget.CompoundButton.RadioButton">
+		<item name="android:button">@drawable/abc_btn_radio_material</item>
+		<item name="android:checkMark">?android:attr/listChoiceIndicatorSingle</item>
+	</style>
+
+	<style name="ListViewStyle" parent="android:style/Widget.ListView">
+		<item name="android:listSelector">@drawable/background_control</item>
+		<item name="android:drawSelectorOnTop">true</item>
+		<item name="android:checkboxStyle">@style/MaterialCheckBox</item>
+	</style>
+
+	<style name="ToolbarLightBlack" parent="Widget.AppCompat.Toolbar">
+		<item name="android:gravity">left|fill_vertical</item>
+		<item name="android:textColorPrimary">@color/sysBlack</item>
+		<item name="actionMenuTextColor">@color/sysBlack</item>
+		<item name="android:textColorSecondary">@color/sysBlack</item>
+		<item name="actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+		<item name="selectableItemBackground">@drawable/background_control_borderless</item>
+		<item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+		</item>
+	</style>
+
+	<style name="ToolbarLight" parent="Widget.AppCompat.Toolbar">
+		<item name="android:gravity">left|fill_vertical</item>
+		<item name="android:textColorPrimary">@color/sysWhite</item>
+		<item name="actionMenuTextColor">@color/sysWhite</item>
+		<item name="android:textColorSecondary">@color/sysWhite</item>
+		<item name="actionButtonStyle">@style/Widget.AppCompat.Light.ActionButton</item>
+		<item name="selectableItemBackground">@drawable/background_control_borderless</item>
+		<item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+		</item>
+	</style>
+
+	<style name="ToolbarDark" parent="Widget.AppCompat.Toolbar">
+		<item name="android:gravity">left|fill_vertical</item>
+		<item name="android:textColorPrimary">@color/sysWhite</item>
+		<item name="actionMenuTextColor">@color/sysWhite</item>
+		<item name="android:textColorSecondary">@color/sysWhite</item>
+		<item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+		<item name="selectableItemBackground">@drawable/background_control_borderless</item>
+		<item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+		</item>
+	</style>
+
+	<style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="ThemeDarkBasic" parent="Theme.AppCompat.NoActionBar">
+		<item name="android:windowBackground">@android:color/black</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textColorSecondary">@android:color/white</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:listSeparatorTextViewStyle">@style/PreferenceListHeaderDark</item>
+		<item name="iconPalette">@drawable/ic_palette_white_48dp</item>
+		<item name="iconLanguage">@drawable/ic_language_white_48dp</item>
+		<item name="android:alertDialogStyle">@style/AlertDialogStyleDark</item>
+		<item name="android:checkboxStyle">@style/MaterialCheckBox</item>
+		<item name="android:radioButtonStyle">@style/MaterialRadioButton</item>
+		<item name="asb_switchPreferenceStyle">@style/asb_Preference.SwitchPreference</item>
+		<item name="selectableItemBackground">@drawable/background_control</item>
+		<item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+		</item>
+		<item name="android:listViewStyle">@style/ListViewStyle</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+		<item name="drawerArrowStyle">@style/DrawerArrowStyleDark</item>
+		<item name="iconSettings">@drawable/ic_settings_white_48dp</item>
+		<item name="tabTextColor">@color/sysWhite</item>
+		<item name="toolbarNewStyle">@style/ToolbarDark</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchWhite</item>
+	</style>
+
+	<style name="ThemeLightBasic" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowBackground">@android:color/white</item>
+		<item name="android:textColor">@android:color/black</item>
+		<item name="android:textColorSecondary">@android:color/black</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:listSeparatorTextViewStyle">@style/PreferenceListHeaderLight</item>
+		<item name="iconPalette">@drawable/ic_palette_black_48dp</item>
+		<item name="iconLanguage">@drawable/ic_language_black_48dp</item>
+		<item name="android:alertDialogStyle">@style/AlertDialogStyleLight</item>
+		<item name="android:checkboxStyle">@style/MaterialCheckBox</item>
+		<item name="android:radioButtonStyle">@style/MaterialRadioButton</item>
+		<item name="asb_switchPreferenceStyle">@style/asb_Preference.SwitchPreference</item>
+		<item name="selectableItemBackground">@drawable/background_control</item>
+		<item name="selectableItemBackgroundBorderless">@drawable/background_control_borderless
+		</item>
+		<item name="android:listViewStyle">@style/ListViewStyle</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="drawerArrowStyle">@style/DrawerArrowStyleDark</item>
+		<item name="iconSettings">@drawable/ic_settings_white_48dp</item>
+		<item name="tabTextColor">@color/sysWhite</item>
+		<item name="toolbarNewStyle">@style/ToolbarLight</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchWhite</item>
+	</style>
+
+	<style name="ThemeLight" parent="ThemeLightBasic" />
+
+	<style name="ThemeDark" parent="ThemeDarkBasic" />
+
+	<style name="ColorSwitchWhite" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="switch_colorControlActivated">@color/sysWhite</item>
+		<item name="switch_colorSwitchThumbNormal">@color/md_grey_400</item>
+		<item name="switch_colorForeground">@color/md_grey_300</item>
+	</style>
+
+	<style name="ColorSwitchBlack" parent="Theme.AppCompat.NoActionBar">
+		<item name="switch_colorControlActivated">@color/sysBlack</item>
+		<item name="switch_colorSwitchThumbNormal">@color/md_grey_400</item>
+		<item name="switch_colorForeground">@color/md_grey_300</item>
+	</style>
+
+	<style name="ThemeDarkBlack" parent="ThemeDark">
+		<item name="colorPrimary">@color/sysBlack</item>
+		<item name="colorPrimaryDark">@color/sysBlack</item>
+		<item name="colorAccent">@color/sysWhite</item>
+	</style>
+
+	<style name="ThemeLightBlack" parent="ThemeLight">
+		<item name="colorPrimary">@color/sysBlack</item>
+		<item name="colorPrimaryDark">@color/sysBlack</item>
+		<item name="colorAccent">@color/sysBlack</item>
+	</style>
+
+	<style name="ThemeDarkWhite" parent="ThemeDark">
+		<item name="colorPrimary">@color/sysWhite</item>
+		<item name="colorPrimaryDark">@color/sysBlack</item>
+		<item name="colorAccent">@color/sysWhite</item>
+		<item name="toolbarNewStyle">@style/ToolbarLightBlack</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchBlack</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+		<item name="drawerArrowStyle">@style/DrawerArrowStyleLight</item>
+		<item name="iconSettings">@drawable/ic_settings_black_48dp</item>
+		<item name="tabTextColor">@color/sysBlack</item>
+	</style>
+
+	<style name="ThemeLightWhite" parent="ThemeLight">
+		<item name="colorPrimary">@color/sysWhite</item>
+		<item name="colorPrimaryDark">@color/sysBlack</item>
+		<item name="colorAccent">@color/sysBlack</item>
+		<item name="toolbarNewStyle">@style/ToolbarLightBlack</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchBlack</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="drawerArrowStyle">@style/DrawerArrowStyleLight</item>
+		<item name="iconSettings">@drawable/ic_settings_black_48dp</item>
+		<item name="tabTextColor">@color/sysBlack</item>
+	</style>
+
+	<style name="ThemeDarkRed" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_red_700</item>
+		<item name="colorPrimaryDark">@color/md_red_900</item>
+		<item name="colorAccent">@color/md_red_700</item>
+	</style>
+
+	<style name="ThemeLightRed" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_red_700</item>
+		<item name="colorPrimaryDark">@color/md_red_900</item>
+		<item name="colorAccent">@color/md_red_700</item>
+	</style>
+
+	<style name="ThemeDarkPink" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_pink_700</item>
+		<item name="colorPrimaryDark">@color/md_pink_900</item>
+		<item name="colorAccent">@color/md_pink_700</item>
+	</style>
+
+	<style name="ThemeLightPink" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_pink_700</item>
+		<item name="colorPrimaryDark">@color/md_pink_900</item>
+		<item name="colorAccent">@color/md_pink_700</item>
+	</style>
+
+	<style name="ThemeDarkPurple" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_purple_700</item>
+		<item name="colorPrimaryDark">@color/md_purple_900</item>
+		<item name="colorAccent">@color/md_purple_700</item>
+	</style>
+
+	<style name="ThemeLightPurple" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_purple_700</item>
+		<item name="colorPrimaryDark">@color/md_purple_900</item>
+		<item name="colorAccent">@color/md_purple_700</item>
+	</style>
+
+	<style name="ThemeDarkDeepPurple" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_deep_purple_700</item>
+		<item name="colorPrimaryDark">@color/md_deep_purple_900</item>
+		<item name="colorAccent">@color/md_deep_purple_700</item>
+	</style>
+
+	<style name="ThemeLightDeepPurple" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_deep_purple_700</item>
+		<item name="colorPrimaryDark">@color/md_deep_purple_900</item>
+		<item name="colorAccent">@color/md_deep_purple_700</item>
+	</style>
+
+	<style name="ThemeDarkIndigo" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_indigo_700</item>
+		<item name="colorPrimaryDark">@color/md_indigo_900</item>
+		<item name="colorAccent">@color/md_indigo_700</item>
+	</style>
+
+	<style name="ThemeLightIndigo" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_indigo_700</item>
+		<item name="colorPrimaryDark">@color/md_indigo_900</item>
+		<item name="colorAccent">@color/md_indigo_700</item>
+	</style>
+
+	<style name="ThemeDarkBlue" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_blue_700</item>
+		<item name="colorPrimaryDark">@color/md_blue_900</item>
+		<item name="colorAccent">@color/md_blue_700</item>
+	</style>
+
+	<style name="ThemeLightBlue" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_blue_700</item>
+		<item name="colorPrimaryDark">@color/md_blue_900</item>
+		<item name="colorAccent">@color/md_blue_700</item>
+	</style>
+
+	<style name="ThemeDarkLightBlue" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_light_blue_700</item>
+		<item name="colorPrimaryDark">@color/md_light_blue_900</item>
+		<item name="colorAccent">@color/md_light_blue_700</item>
+	</style>
+
+	<style name="ThemeLightLightBlue" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_light_blue_700</item>
+		<item name="colorPrimaryDark">@color/md_light_blue_900</item>
+		<item name="colorAccent">@color/md_light_blue_700</item>
+	</style>
+
+	<style name="ThemeDarkCyan" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_cyan_700</item>
+		<item name="colorPrimaryDark">@color/md_cyan_900</item>
+		<item name="colorAccent">@color/md_cyan_700</item>
+	</style>
+
+	<style name="ThemeLightCyan" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_cyan_700</item>
+		<item name="colorPrimaryDark">@color/md_cyan_900</item>
+		<item name="colorAccent">@color/md_cyan_700</item>
+	</style>
+
+	<style name="ThemeDarkTeal" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_teal_700</item>
+		<item name="colorPrimaryDark">@color/md_teal_900</item>
+		<item name="colorAccent">@color/md_teal_700</item>
+	</style>
+
+	<style name="ThemeLightTeal" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_teal_700</item>
+		<item name="colorPrimaryDark">@color/md_teal_900</item>
+		<item name="colorAccent">@color/md_teal_700</item>
+	</style>
+
+	<style name="ThemeDarkGreen" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_green_700</item>
+		<item name="colorPrimaryDark">@color/md_green_900</item>
+		<item name="colorAccent">@color/md_green_700</item>
+	</style>
+
+	<style name="ThemeLightGreen" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_green_700</item>
+		<item name="colorPrimaryDark">@color/md_green_900</item>
+		<item name="colorAccent">@color/md_green_700</item>
+	</style>
+
+	<style name="ThemeDarkLightGreen" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_light_green_700</item>
+		<item name="colorPrimaryDark">@color/md_light_green_900</item>
+		<item name="colorAccent">@color/md_light_green_700</item>
+	</style>
+
+	<style name="ThemeLightLightGreen" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_light_green_700</item>
+		<item name="colorPrimaryDark">@color/md_light_green_900</item>
+		<item name="colorAccent">@color/md_light_green_700</item>
+	</style>
+
+	<style name="ThemeDarkLime" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_lime_700</item>
+		<item name="colorPrimaryDark">@color/md_lime_900</item>
+		<item name="colorAccent">@color/md_lime_700</item>
+	</style>
+
+	<style name="ThemeLightLime" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_lime_700</item>
+		<item name="colorPrimaryDark">@color/md_lime_900</item>
+		<item name="colorAccent">@color/md_lime_900</item>
+	</style>
+
+	<style name="ThemeDarkYellow" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_yellow_700</item>
+		<item name="colorPrimaryDark">@color/md_yellow_900</item>
+		<item name="colorAccent">@color/md_yellow_700</item>
+		<item name="toolbarNewStyle">@style/ToolbarLightBlack</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchBlack</item>
+	</style>
+
+	<style name="ThemeLightYellow" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_yellow_700</item>
+		<item name="colorPrimaryDark">@color/md_yellow_900</item>
+		<item name="colorAccent">@color/md_yellow_900</item>
+		<item name="toolbarNewStyle">@style/ToolbarLightBlack</item>
+		<item name="colorSwitchStyle">@style/ColorSwitchBlack</item>
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="drawerArrowStyle">@style/DrawerArrowStyleLight</item>
+		<item name="iconSettings">@drawable/ic_settings_black_48dp</item>
+		<item name="tabTextColor">@color/sysBlack</item>
+	</style>
+
+	<style name="ThemeDarkAmber" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_amber_700</item>
+		<item name="colorPrimaryDark">@color/md_amber_900</item>
+		<item name="colorAccent">@color/md_amber_700</item>
+	</style>
+
+	<style name="ThemeLightAmber" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_amber_700</item>
+		<item name="colorPrimaryDark">@color/md_amber_900</item>
+		<item name="colorAccent">@color/md_amber_700</item>
+	</style>
+
+	<style name="ThemeDarkOrange" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_orange_700</item>
+		<item name="colorPrimaryDark">@color/md_orange_900</item>
+		<item name="colorAccent">@color/md_orange_700</item>
+	</style>
+
+	<style name="ThemeLightOrange" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_orange_700</item>
+		<item name="colorPrimaryDark">@color/md_orange_900</item>
+		<item name="colorAccent">@color/md_orange_700</item>
+	</style>
+
+	<style name="ThemeDarkDeepOrange" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_deep_orange_700</item>
+		<item name="colorPrimaryDark">@color/md_deep_orange_900</item>
+		<item name="colorAccent">@color/md_deep_orange_700</item>
+	</style>
+
+	<style name="ThemeLightDeepOrange" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_deep_orange_700</item>
+		<item name="colorPrimaryDark">@color/md_deep_orange_900</item>
+		<item name="colorAccent">@color/md_deep_orange_700</item>
+	</style>
+
+	<style name="ThemeDarkBrown" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_brown_700</item>
+		<item name="colorPrimaryDark">@color/md_brown_900</item>
+		<item name="colorAccent">@color/md_brown_700</item>
+	</style>
+
+	<style name="ThemeLightBrown" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_brown_700</item>
+		<item name="colorPrimaryDark">@color/md_brown_900</item>
+		<item name="colorAccent">@color/md_brown_700</item>
+	</style>
+
+	<style name="ThemeDarkGrey" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_grey_700</item>
+		<item name="colorPrimaryDark">@color/md_grey_900</item>
+		<item name="colorAccent">@color/md_grey_700</item>
+	</style>
+
+	<style name="ThemeLightGrey" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_grey_700</item>
+		<item name="colorPrimaryDark">@color/md_grey_900</item>
+		<item name="colorAccent">@color/md_grey_700</item>
+	</style>
+
+	<style name="ThemeDarkBlueGrey" parent="ThemeDark">
+		<item name="colorPrimary">@color/md_blue_grey_700</item>
+		<item name="colorPrimaryDark">@color/md_blue_grey_900</item>
+		<item name="colorAccent">@color/md_blue_grey_700</item>
+	</style>
+
+	<style name="ThemeLightBlueGrey" parent="ThemeLight">
+		<item name="colorPrimary">@color/md_blue_grey_700</item>
+		<item name="colorPrimaryDark">@color/md_blue_grey_900</item>
+		<item name="colorAccent">@color/md_blue_grey_700</item>
+	</style>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ImageListPreference">
+        <attr name="entryImages" format="reference" />
+        <attr name="entryColors" format="reference" />  
+        <attr name="entryFonts" format="reference" />
+        <attr name="entryBatteries" format="reference" />
+        <attr name="entryColorSchemes" format="reference" />      
+    </declare-styleable>
+
+    <attr name="iconSettings" format="reference" />
+    <attr name="iconPalette" format="reference" />
+    <attr name="iconLanguage" format="reference" />
+    <attr name="tabTextColor" format="reference" />
+    <attr name="toolbarNewStyle" format="reference" />
+    <attr name="colorSwitchStyle" format="reference" />
+
+    <declare-styleable name="ColorSwitch">
+        <attr name="switch_colorControlActivated" format="reference" />
+        <attr name="switch_colorSwitchThumbNormal" format="reference" />
+        <attr name="switch_colorForeground" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="asb_SwitchPreference">
+        <!--
+             The summary for the Preference in a PreferenceActivity screen when the
+             SwitchPreference is checked. If separate on/off summaries are not
+             needed, the summary attribute can be used instead.
+        -->
+        <attr name="asb_summaryOn" format="reference" />
+        <!--
+             The summary for the Preference in a PreferenceActivity screen when the
+             SwitchPreference is unchecked. If separate on/off summaries are not
+             needed, the summary attribute can be used instead.
+        -->
+        <attr name="asb_summaryOff" format="reference" />
+        <!--
+             The text used on the switch itself when in the "on" state.
+             This should be a very SHORT string, as it appears in a small space.
+        -->
+        <attr name="asb_switchTextOn" format="reference" />
+        <!--
+             The text used on the switch itself when in the "off" state.
+             This should be a very SHORT string, as it appears in a small space.
+        -->
+        <attr name="asb_switchTextOff" format="reference" />
+        <!--
+             The state (true for on, or false for off) that causes dependents to be disabled. By default,
+             dependents will be disabled when this is unchecked, so the value of this preference is false.
+        -->
+        <attr name="asb_disableDependentsState" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="asb_SwitchBackportTheme">
+        <attr name="asb_switchPreferenceStyle" format="reference" />
+    </declare-styleable>
+
+</resources>
