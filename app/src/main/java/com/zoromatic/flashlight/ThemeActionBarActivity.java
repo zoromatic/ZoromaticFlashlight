@@ -5,7 +5,6 @@ import java.util.Locale;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -212,22 +211,6 @@ public class ThemeActionBarActivity extends AppCompatActivity {
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         // Allow super to try and create a view first
         final View result = super.onCreateView(name, context, attrs);
-
-        //if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-        // If we're running pre-L, we need to 'inject' our tint aware Views in place of the
-        // standard framework versions
-            /*if (name.equalsIgnoreCase("EditText")) {
-                return new TintEditText(this, attrs);
-            } else if (name.equalsIgnoreCase("Spinner")) {
-                return new TintSpinner(this, attrs);
-            } else if (name.equalsIgnoreCase("CheckBox")) {
-                return new TintCheckBox(this, attrs);
-            } else if (name.equalsIgnoreCase("RadioButton")) {
-                return new TintRadioButton(this, attrs);
-            } else if (name.equalsIgnoreCase("CheckedTextView")) {
-                return new TintCheckedTextView(this, attrs);
-            }*/
-        //}
 
         if (result != null) {
             return result;

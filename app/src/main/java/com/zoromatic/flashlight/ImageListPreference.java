@@ -3,18 +3,18 @@
  */
 package com.zoromatic.flashlight;
 
-import com.alertdialogpro.AlertDialogPro;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.ListPreference;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ListAdapter;
@@ -162,8 +162,15 @@ public class ImageListPreference extends ListPreference {
 
         String theme = Preferences.getTheme(getContext());
 
-        AlertDialogPro.Builder mBuilder = new AlertDialogPro.Builder(context,
-                theme.compareToIgnoreCase("light") == 0 ? R.style.Theme_AlertDialogPro_Material_Light : R.style.Theme_AlertDialogPro_Material);
+        int themeResId;
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            themeResId = theme.compareToIgnoreCase("light") == 0 ? android.R.style.Theme_Material_Light_Dialog_Alert : android.R.style.Theme_Material_Dialog_Alert;
+        } else {
+            themeResId = theme.compareToIgnoreCase("light") == 0 ? android.R.style.Theme_Holo_Light : android.R.style.Theme_Holo;
+        }
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(context, themeResId);
         mBuilder.setTitle(getTitle());
         mBuilder.setIcon(getDialogIcon());
         mBuilder.setNegativeButton(getNegativeButtonText(), this);

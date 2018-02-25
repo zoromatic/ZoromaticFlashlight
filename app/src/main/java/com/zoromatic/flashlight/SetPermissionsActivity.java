@@ -14,8 +14,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
-import com.alertdialogpro.AlertDialogPro;
-
 public class SetPermissionsActivity extends AppCompatActivity {
     public static final String PERMISSIONS_TYPE = "PERMISSIONS_TYPE";
     public static final int PERMISSIONS_REQUEST_CAMERA = 1;
@@ -130,8 +128,15 @@ public class SetPermissionsActivity extends AppCompatActivity {
             mContext = getActivity();
             String theme = Preferences.getTheme(getContext());
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(mContext,
-                    theme.compareToIgnoreCase("light") == 0 ? R.style.Theme_AlertDialogPro_Material_Light : R.style.Theme_AlertDialogPro_Material);
+            int themeResId;
+
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                themeResId = theme.compareToIgnoreCase("light") == 0 ? android.R.style.Theme_Material_Light_Dialog_Alert : android.R.style.Theme_Material_Dialog_Alert;
+            } else {
+                themeResId = theme.compareToIgnoreCase("light") == 0 ? android.R.style.Theme_Holo_Light : android.R.style.Theme_Holo;
+            }
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext, themeResId);
 
             if (mPermissionType == PERMISSIONS_REQUEST_CAMERA) {
                 builder

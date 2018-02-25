@@ -70,20 +70,20 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     private boolean mActive = false;
     private boolean mSwap = true;
     private int mDelay = 0;
-    public static final String ALERTOPEN = "alertopen";
-    public static final String ALERTID = "alertid";
+    public static final String ALERT_OPEN = "alert_open";
+    public static final String ALERT_ID = "alert_id";
     private boolean mAlertDialogOpen = false;
     private int mAlertDialogID = -1;
     private String log = "";
-    public static final int CAMERANOTSUPPORTED = 0;
-    public static final int FLASHNOTSUPPORTED = 1;
-    public static final int FLASHNOTAVAILABLE = 2;
-    public static final String MYCAMERA = "mycamera";
+    public static final int CAMERA_NOT_SUPPORTED = 0;
+    public static final int FLASH_NOT_SUPPORTED = 1;
+    public static final int FLASH_NOT_AVAILABLE = 2;
+    public static final String CAMERA_OPEN = "camera_open";
     private boolean mCameraOpen = false;
-    public static final String DRAWEROPEN = "draweropen";
+    public static final String DRAWER_OPEN = "drawer_open";
     private boolean mDrawerOpen = false;
 
-    public static final String TOGGLEON = "toggleon";
+    public static final String TOGGLE_ON = "toggle_on";
     public static final String FREQUENCY = "frequency";
     private boolean mToggleOn = false;
     private int mStrobeFrequency = 0;
@@ -99,7 +99,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     private String initialLanguage = "en";
 
     private final Runnable mRunnable = new Runnable() {
-
         public void run() {
             if (mActive) {
                 try {
@@ -125,45 +124,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    button = (ToggleButton) findViewById(R.id.togglebutton);
-                    if (button != null) {
-                        button.setChecked(false);
-                    }
-                    seekBar.setEnabled(false);
-
-                    mToggleOn = false;
-                }
-            }
-        }
-    };
-
-    @SuppressWarnings("unused")
-    private final Thread mThread = new Thread() {
-        public void run() {
-            if (mActive) {
-                try {
-                    if (camera == null) {
-                        return;
-                    }
-
-                    final Parameters p = camera.getParameters();
-
-                    while (mActive) {
-                        p.setFlashMode(Parameters.FLASH_MODE_TORCH);
-                        camera.setParameters(p);
-                        camera.startPreview();
-
-                        sleep(mDelay);
-
-                        p.setFlashMode(Parameters.FLASH_MODE_OFF);
-                        camera.setParameters(p);
-                        camera.stopPreview();
-
-                        sleep(mDelay);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    button = (ToggleButton) findViewById(R.id.togglebutton);
+                    button = findViewById(R.id.togglebutton);
                     if (button != null) {
                         button.setChecked(false);
                     }
@@ -181,8 +142,12 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             return;
         }
 
-        mActive = true;
+        // reset strobe
+        if (mActive) {
+            stopStrobe();
+        }
 
+        mActive = true;
         mDelay = (int) ((1 / (float) frequency) * 1000 / 2);
 
         mHandler.post(mRunnable);
@@ -242,18 +207,18 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         setContentView(R.layout.activity_flashlight);
 
         initView();
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initDrawer();
 
-        TypedValue outValue = new TypedValue();
+        /*TypedValue outValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.colorPrimary,
                 outValue,
                 true);
         int primaryColor = outValue.resourceId;
 
         setStatusBarColor(findViewById(R.id.statusBarBackground),
-                getResources().getColor(primaryColor));
+                getResources().getColor(primaryColor));*/
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -271,7 +236,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             notification.setColor(0);
         }
 
-        notification.setDefaults(Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR);
+        notification.setDefaults(Notification.FLAG_NO_CLEAR);
         notification.setSmallIcon(R.drawable.ic_launcher);
         notification.setWhen(0);
         notification.setPriority(Notification.PRIORITY_HIGH);
@@ -280,13 +245,14 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         notification.setContentTitle(getResources().getText(R.string.app_name));
         notification.setContentText(getResources().getText(R.string.tapopen));
         notification.setContentIntent(pendingIntent);
+        notification.setVibrate(new long[]{0L});
 
-        TextView valueFrequency = (TextView) findViewById(R.id.valueFrequency);
+        TextView valueFrequency = findViewById(R.id.valueFrequency);
         if (valueFrequency != null) {
             valueFrequency.setText(Integer.toString(0), TextView.BufferType.NORMAL);
         }
 
-        button = (ToggleButton) findViewById(R.id.togglebutton);
+        button = findViewById(R.id.togglebutton);
         if (button != null) {
             button.setChecked(false);
             button.setOnClickListener(new View.OnClickListener() {
@@ -298,14 +264,13 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             });
         }
 
-        seekBar = (SeekBar) findViewById(R.id.seekBarStrobe);
+        seekBar = findViewById(R.id.seekBarStrobe);
         if (seekBar != null) {
             seekBar.setEnabled(false);
             seekBar.setProgress(0);
         }
 
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
@@ -327,9 +292,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                     stopStrobe();
 
                     if (camera != null) {
-                        boolean on = ((ToggleButton) button).isChecked();
+                        boolean turnedOn = button.isChecked();
 
-                        if (on) {
+                        if (turnedOn) {
                             final Parameters p = camera.getParameters();
 
                             p.setFlashMode(Parameters.FLASH_MODE_TORCH);
@@ -367,52 +332,55 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
             if (!isCameraSupported(pm)) {
                 mAlertDialogOpen = true;
-                mAlertDialogID = CAMERANOTSUPPORTED;
+                mAlertDialogID = CAMERA_NOT_SUPPORTED;
                 openAlertDialog(mAlertDialogID);
             } else {
                 if (!isFlashSupported(pm)) {
                     mAlertDialogOpen = true;
-                    mAlertDialogID = FLASHNOTSUPPORTED;
+                    mAlertDialogID = FLASH_NOT_SUPPORTED;
                     openAlertDialog(mAlertDialogID);
                 } else {
-
                     if (savedInstanceState == null) {
-                        boolean turnon = Preferences.getTurnOnOnOpen(context);
+                        boolean turnOn = Preferences.getTurnOnOnOpen(context);
 
-                        if (turnon) {
+                        if (turnOn) {
                             mToggleOn = true;
 
                             button.setChecked(mToggleOn);
                             seekBar.setEnabled(mToggleOn);
                         }
 
-                        boolean keepstrobe = Preferences.getKeepStrobeFrequency(context);
+                        boolean keepStrobe = Preferences.getKeepStrobeFrequency(context);
 
-                        if (keepstrobe) {
+                        if (keepStrobe) {
                             mStrobeFrequency = Preferences.getStrobeFrequency(context);
                             seekBar.setProgress(mStrobeFrequency);
+
+                            //startStrobe(seekBar.getProgress());
                         }
                     } else {
                         Intent localIntent = getIntent();
                         Bundle extras = localIntent.getExtras();
 
                         if (extras != null) {
-                            mToggleOn = extras.getBoolean(TOGGLEON);
+                            mToggleOn = extras.getBoolean(TOGGLE_ON);
                             mStrobeFrequency = extras.getInt(FREQUENCY);
 
                             button.setChecked(mToggleOn);
                             seekBar.setEnabled(mToggleOn);
                             seekBar.setProgress(mStrobeFrequency);
+
+                            //startStrobe(seekBar.getProgress());
                         }
                     }
 
-                    if (camera == null)
-                        new CameraTask().execute();
+                    //if (camera == null)
+                    //    new CameraTask().execute();
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-            button = (ToggleButton) findViewById(R.id.togglebutton);
+            button = findViewById(R.id.togglebutton);
             if (button != null) {
                 button.setChecked(false);
             }
@@ -420,15 +388,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
             mToggleOn = false;
         }
-    }
-
-    public int getActionBarHeight() {
-        int actionBarHeight = 0;
-        TypedValue tv = new TypedValue();
-        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-        }
-        return actionBarHeight;
     }
 
     public int getStatusBarHeight() {
@@ -440,7 +399,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         return result;
     }
 
-    @SuppressLint("InlinedApi")
+    /*@SuppressLint("InlinedApi")
     public void setStatusBarColor(View statusBar, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window w = getWindow();
@@ -451,7 +410,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         } else {
             statusBar.setVisibility(View.GONE);
         }
-    }
+    }*/
 
     @Override
     protected void onDestroy() {
@@ -469,87 +428,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            button = (ToggleButton) findViewById(R.id.togglebutton);
-            if (button != null) {
-                button.setChecked(false);
-            }
-            seekBar.setEnabled(false);
-
-            mToggleOn = false;
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (camera != null) {
-            try {
-                final Parameters p = camera.getParameters();
-
-                boolean on = ((ToggleButton) button).isChecked();
-
-                if (on) {
-                    Log.i("FlashlightActivity", "Flashlight is turned on!");
-                    p.setFlashMode(Parameters.FLASH_MODE_TORCH);
-                    camera.setParameters(p);
-                    camera.startPreview();
-
-                    seekBar.setEnabled(true);
-
-                    if (seekBar.getProgress() > 0)
-                        startStrobe(seekBar.getProgress());
-
-                    startNotification(true);
-
-                    mToggleOn = true;
-
-                } else {
-                    Log.i("FlashlightActivity", "Flashlight is turned off!");
-                    p.setFlashMode(Parameters.FLASH_MODE_OFF);
-                    camera.setParameters(p);
-                    camera.stopPreview();
-
-                    stopStrobe();
-                    seekBar.setEnabled(false);
-
-                    startNotification(false);
-
-                    mToggleOn = false;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                button = (ToggleButton) findViewById(R.id.togglebutton);
-                if (button != null) {
-                    button.setChecked(false);
-                }
-                seekBar.setEnabled(false);
-
-                mToggleOn = false;
-            }
-        }
-    }
-
-    ;
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        try {
-            boolean keep = Preferences.getKeepActive(context);
-
-            if (!keep && camera != null) {
-                stopStrobe();
-
-                camera.stopPreview();
-                camera.release();
-                camera = null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            button = (ToggleButton) findViewById(R.id.togglebutton);
+            button = findViewById(R.id.togglebutton);
             if (button != null) {
                 button.setChecked(false);
             }
@@ -576,7 +455,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         } catch (Exception e) {
             e.printStackTrace();
 
-            button = (ToggleButton) findViewById(R.id.togglebutton);
+            button = findViewById(R.id.togglebutton);
             if (button != null) {
                 button.setChecked(false);
             }
@@ -594,9 +473,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             try {
                 final Parameters p = camera.getParameters();
 
-                boolean on = ((ToggleButton) button).isChecked();
+                boolean turnedOn = button.isChecked();
 
-                if (on) {
+                if (turnedOn) {
                     Log.i("FlashlightActivity", "Flashlight is turned on!");
                     p.setFlashMode(Parameters.FLASH_MODE_TORCH);
                     camera.setParameters(p);
@@ -626,7 +505,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                button = (ToggleButton) findViewById(R.id.togglebutton);
+                button = findViewById(R.id.togglebutton);
                 if (button != null) {
                     button.setChecked(false);
                 }
@@ -640,12 +519,11 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     }
 
     private void initView() {
-        leftDrawerList = (ListView) findViewById(R.id.left_drawer);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        //navigationDrawerAdapter = new ArrayAdapter<String>( this, R.layout.simple_list_item_1, leftSliderData);        
+        leftDrawerList = findViewById(R.id.left_drawer);
+        toolbar = findViewById(R.id.toolbar);
+        drawerLayout = findViewById(R.id.drawerLayout);
 
-        List<RowItem> rowItems = new ArrayList<RowItem>();
+        List<RowItem> rowItems = new ArrayList<>();
         String theme = Preferences.getTheme(this);
 
         RowItem item = new RowItem(theme.compareToIgnoreCase("light") == 0 ? R.drawable.ic_settings_black_48dp : R.drawable.ic_settings_white_48dp,
@@ -654,7 +532,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
         ItemAdapter adapter = new ItemAdapter(this, rowItems);
         leftDrawerList.setAdapter(adapter);
-        //leftDrawerList.setAdapter(navigationDrawerAdapter);
 
         leftDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -703,14 +580,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         mDrawerOpen = false;
 
         if (position == 0) { // open Settings
-            Intent settingsIntent = null;
-
-            //if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            //	settingsIntent = new Intent(getApplicationContext(), ZoromaticFlashlightPreferenceActivity.class);
-            //} else {
-            settingsIntent = new Intent(getApplicationContext(), FlashlightPreferenceActivity.class);
-            //}
-
+            Intent settingsIntent = new Intent(getApplicationContext(), FlashlightPreferenceActivity.class);
             startActivityForResult(settingsIntent, ACTIVITY_SETTINGS);
         }
     }
@@ -723,13 +593,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         setContentView(R.layout.activity_flashlight);
 
         initView();
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initDrawer();
-
-	    /*ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-	    actionBar.setIcon(R.drawable.ic_launcher);*/
 
         drawerToggle.onConfigurationChanged(newConfig);
 
@@ -743,12 +609,12 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
         drawerToggle.syncState();
 
-        button = (ToggleButton) findViewById(R.id.togglebutton);
+        button = findViewById(R.id.togglebutton);
         if (button != null) {
             button.setChecked(mToggleOn);
         }
 
-        seekBar = (SeekBar) findViewById(R.id.seekBarStrobe);
+        seekBar = findViewById(R.id.seekBarStrobe);
         if (seekBar != null) {
             seekBar.setEnabled(mToggleOn);
             seekBar.setProgress(mStrobeFrequency);
@@ -777,9 +643,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                     stopStrobe();
 
                     if (camera != null) {
-                        boolean on = ((ToggleButton) button).isChecked();
+                        boolean turnedOn = button.isChecked();
 
-                        if (on) {
+                        if (turnedOn) {
                             final Parameters p = camera.getParameters();
 
                             p.setFlashMode(Parameters.FLASH_MODE_TORCH);
@@ -798,16 +664,14 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         });
     }
 
-    ;
-
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putBoolean(ALERTOPEN, mAlertDialogOpen);
-        savedInstanceState.putInt(ALERTID, mAlertDialogID);
-        savedInstanceState.putBoolean(MYCAMERA, mCameraOpen);
-        savedInstanceState.putBoolean(TOGGLEON, mToggleOn);
+        savedInstanceState.putBoolean(ALERT_OPEN, mAlertDialogOpen);
+        savedInstanceState.putInt(ALERT_ID, mAlertDialogID);
+        savedInstanceState.putBoolean(CAMERA_OPEN, mCameraOpen);
+        savedInstanceState.putBoolean(TOGGLE_ON, mToggleOn);
         savedInstanceState.putInt(FREQUENCY, mStrobeFrequency);
-        savedInstanceState.putBoolean(DRAWEROPEN, mDrawerOpen);
+        savedInstanceState.putBoolean(DRAWER_OPEN, mDrawerOpen);
 
         savedState = savedInstanceState;
 
@@ -820,12 +684,12 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         // Always call the superclass so it can restore the view hierarchy
         super.onRestoreInstanceState(savedInstanceState);
 
-        mAlertDialogOpen = savedInstanceState.getBoolean(ALERTOPEN);
-        mAlertDialogID = savedInstanceState.getInt(ALERTID);
-        mCameraOpen = savedInstanceState.getBoolean(MYCAMERA);
-        mToggleOn = savedInstanceState.getBoolean(TOGGLEON);
+        mAlertDialogOpen = savedInstanceState.getBoolean(ALERT_OPEN);
+        mAlertDialogID = savedInstanceState.getInt(ALERT_ID);
+        mCameraOpen = savedInstanceState.getBoolean(CAMERA_OPEN);
+        mToggleOn = savedInstanceState.getBoolean(TOGGLE_ON);
         mStrobeFrequency = savedInstanceState.getInt(FREQUENCY);
-        mDrawerOpen = savedInstanceState.getBoolean(DRAWEROPEN);
+        mDrawerOpen = savedInstanceState.getBoolean(DRAWER_OPEN);
 
         if (mAlertDialogOpen) {
             openAlertDialog(mAlertDialogID);
@@ -841,12 +705,11 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         }
 
         button.setChecked(mToggleOn);
-        seekBar.setEnabled(mToggleOn);
-        seekBar.setProgress(mStrobeFrequency);
+        //seekBar.setEnabled(mToggleOn);
+        //seekBar.setProgress(mStrobeFrequency);
     }
 
     private void startNotification(boolean start) {
-
         if (start) {
             notificationManager.notify(R.string.app_name, notification.build());
         } else {
@@ -856,7 +719,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
     private void openAlertDialog(int alertDialogID) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        String title = "", message = "";
+        String title, message;
 
         if (alertDialogID == 0) {
             title = getResources().getString(R.string.noflash);
@@ -932,12 +795,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
     public class CameraTask extends AsyncTask<Void, Void, OpenCamera> {
 
-        Runnable uiRunnable = new Runnable() {
-            public void run() {
-
-            }
-        };
-
         @Override
         protected void onPreExecute() {
 
@@ -945,7 +802,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
         @Override
         protected OpenCamera doInBackground(Void... params) {
-            OpenCamera openResult = null;
+            OpenCamera openResult;
 
             try {
                 if (camera == null)
@@ -970,9 +827,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             try {
                 if (found != null && found.cameraResult) {
 
-                    boolean on = ((ToggleButton) button).isChecked();
+                    boolean turnedOn = button.isChecked();
 
-                    if (on) {
+                    if (turnedOn) {
                         final Parameters p = camera.getParameters();
 
                         p.setFlashMode(Parameters.FLASH_MODE_TORCH);
@@ -987,6 +844,10 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                         startNotification(true);
 
                         mToggleOn = true;
+
+                        // hack for cases when flash is not turned on automatically
+                        Thread.sleep(500);
+                        onStart();
                     } else {
                         mToggleOn = false;
                     }
@@ -995,7 +856,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                 } else {
                     if (found != null && found.cameraException && !mCameraOpen) {
                         mAlertDialogOpen = true;
-                        mAlertDialogID = FLASHNOTAVAILABLE;
+                        mAlertDialogID = FLASH_NOT_AVAILABLE;
                         openAlertDialog(mAlertDialogID);
                     }
 
@@ -1018,7 +879,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     }
 
     public void onToggleClicked(View view) {
-
         if (camera == null)
             return;
 
@@ -1028,9 +888,9 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             if (isFlashSupported(pm)) {
                 final Parameters p = camera.getParameters();
 
-                boolean on = ((ToggleButton) view).isChecked();
+                boolean turnedOn = ((ToggleButton) view).isChecked();
 
-                if (on) {
+                if (turnedOn) {
                     Log.i("FlashlightActivity", "Flashlight is turned on!");
                     p.setFlashMode(Parameters.FLASH_MODE_TORCH);
                     camera.setParameters(p);
@@ -1065,12 +925,12 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                 mToggleOn = false;
 
                 mAlertDialogOpen = true;
-                mAlertDialogID = FLASHNOTSUPPORTED;
+                mAlertDialogID = FLASH_NOT_SUPPORTED;
                 openAlertDialog(mAlertDialogID);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            button = (ToggleButton) findViewById(R.id.togglebutton);
+            button = findViewById(R.id.togglebutton);
             if (button != null) {
                 button.setChecked(false);
             }
@@ -1117,10 +977,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                 drawerLayout.closeDrawers();
                 mDrawerOpen = false;
 
-                Intent settingsIntent = null;
-
-                settingsIntent = new Intent(getApplicationContext(), FlashlightPreferenceActivity.class);
-
+                Intent settingsIntent = new Intent(getApplicationContext(), FlashlightPreferenceActivity.class);
                 startActivityForResult(settingsIntent, ACTIVITY_SETTINGS);
             default:
                 return super.onOptionsItemSelected(item);
@@ -1160,7 +1017,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
                 Intent localIntent = getIntent();
                 finish();
-                localIntent.putExtra(TOGGLEON, mToggleOn);
+                localIntent.putExtra(TOGGLE_ON, mToggleOn);
                 localIntent.putExtra(FREQUENCY, mStrobeFrequency);
                 startActivity(localIntent);
             }
@@ -1180,7 +1037,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
                 Intent localIntent = getIntent();
                 finish();
-                localIntent.putExtra(TOGGLEON, mToggleOn);
+                localIntent.putExtra(TOGGLE_ON, mToggleOn);
                 localIntent.putExtra(FREQUENCY, mStrobeFrequency);
                 startActivity(localIntent);
             }
@@ -1200,7 +1057,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
                 Intent localIntent = getIntent();
                 finish();
-                localIntent.putExtra(TOGGLEON, mToggleOn);
+                localIntent.putExtra(TOGGLE_ON, mToggleOn);
                 localIntent.putExtra(FREQUENCY, mStrobeFrequency);
                 startActivity(localIntent);
             }

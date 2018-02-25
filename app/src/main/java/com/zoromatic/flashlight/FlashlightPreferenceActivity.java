@@ -68,15 +68,6 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
         }
     }
 
-    public int getActionBarHeight() {
-        int actionBarHeight = 0;
-        TypedValue tv = new TypedValue();
-        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-        }
-        return actionBarHeight;
-    }
-
     public int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -143,7 +134,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
             super.onCreate(paramBundle);
             setRetainInstance(true);
 
-            Context context = (Context) getActivity();
+            Context context = getActivity();
 
             if (context != null) {
                 String lang = Preferences.getLanguageOptions(context);
@@ -166,11 +157,11 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
                 conf.locale = new Locale(lang.toLowerCase());
                 res.updateConfiguration(conf, dm);
 
-                setPreferences(paramBundle, context);
+                setPreferences(context);
             }
         }
 
-        private void setPreferences(Bundle paramBundle, Context context) {
+        private void setPreferences(Context context) {
             PreferenceManager localPrefs = getPreferenceManager();
             localPrefs.setSharedPreferencesName(Preferences.PREF_NAME);
 
@@ -230,7 +221,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
                 boolean bTurnOnOnOpen = Preferences.getTurnOnOnOpen(context);
                 mTurnOnOnOpen.setChecked(bTurnOnOnOpen);
 
-                String turnon = "";
+                String turnon;
 
                 if (bTurnOnOnOpen)
                     turnon = getResources().getString(R.string.turnon);
@@ -246,7 +237,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
                 boolean bKeepStrobeFreq = Preferences.getKeepStrobeFrequency(context);
                 mKeepStrobeFreq.setChecked(bKeepStrobeFreq);
 
-                String keepstrobe = "";
+                String keepstrobe;
 
                 if (bKeepStrobeFreq)
                     keepstrobe = getResources().getString(R.string.keepstrobefreq);
@@ -262,7 +253,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
                 boolean bKeepActive = Preferences.getKeepActive(context);
                 mKeepActive.setChecked(bKeepActive);
 
-                String keep = "";
+                String keep;
 
                 if (bKeepActive)
                     keep = getResources().getString(R.string.keepactive);
@@ -287,7 +278,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-            Context context = (Context) getActivity();
+            Context context = getActivity();
 
             if (context != null) {
                 if (key.equals(Preferences.PREF_THEME)) {
@@ -362,7 +353,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
 
                         Preferences.setTurnOnOnOpen(context, bTurnOnOnOpen);
 
-                        String turnon = "";
+                        String turnon;
 
                         if (bTurnOnOnOpen)
                             turnon = getResources().getString(R.string.turnon);
@@ -381,7 +372,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
 
                         Preferences.setKeepStrobeFrequency(context, bKeepStrobe);
 
-                        String keep = "";
+                        String keep;
 
                         if (bKeepStrobe)
                             keep = getResources().getString(R.string.keepstrobefreq);
@@ -400,7 +391,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
 
                         Preferences.setKeepActive(context, bKeepActive);
 
-                        String keep = "";
+                        String keep;
 
                         if (bKeepActive)
                             keep = getResources().getString(R.string.keepactive);
