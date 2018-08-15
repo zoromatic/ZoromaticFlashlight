@@ -77,5 +77,7 @@
     <string name="permission_needed_camera">Permissions needed to access camera for turning flashlight on and off.</string>
 
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="notification_channel">Notification Channel</string>
+    <string name="notification_channel_id">notification_channel_id</string>
 
 </resources>

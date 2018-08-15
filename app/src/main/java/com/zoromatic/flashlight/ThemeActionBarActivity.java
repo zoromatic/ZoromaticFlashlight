@@ -2,6 +2,7 @@ package com.zoromatic.flashlight;
 
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+@SuppressLint("Registered")
 public class ThemeActionBarActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {

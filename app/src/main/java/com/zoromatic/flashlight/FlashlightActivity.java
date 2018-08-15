@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.NotificationChannel;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.AsyncTask;
@@ -25,23 +26,20 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -711,7 +709,18 @@ public class FlashlightActivity extends ThemeActionBarActivity {
 
     private void startNotification(boolean start) {
         if (start) {
-            notificationManager.notify(R.string.app_name, notification.build());
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                String CHANNEL_ID = getString(R.string.notification_channel_id);
+                CharSequence channelName = getString(R.string.notification_channel);
+                int importance = NotificationManager.IMPORTANCE_LOW;
+                NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, channelName, importance);
+                notificationManager.createNotificationChannel(mChannel);
+
+                notification.setChannelId(CHANNEL_ID);
+                notificationManager.notify(R.string.app_name, notification.build());
+            } else {
+                notificationManager.notify(R.string.app_name, notification.build());
+            }
         } else {
             notificationManager.cancel(R.string.app_name);
         }
