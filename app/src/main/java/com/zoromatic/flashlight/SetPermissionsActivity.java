@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -105,15 +106,6 @@ public class SetPermissionsActivity extends AppCompatActivity {
         }
     }
 
-    public int getPermissionType() {
-        return mPermissionType;
-    }
-
-    public void setPermissionType(int mPermissionGroup) {
-        this.mPermissionType = mPermissionGroup;
-    }
-
-
     public static class ExplanationDialogFragment extends DialogFragment {
         Context mContext;
         private int mPermissionType = -1;
@@ -145,9 +137,13 @@ public class SetPermissionsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
 
-                                ActivityCompat.requestPermissions(getActivity(),
-                                        new String[]{Manifest.permission.CAMERA},
-                                        PERMISSIONS_REQUEST_CAMERA);
+                                FragmentActivity fragmentActivity = getActivity();
+
+                                if (fragmentActivity != null) {
+                                    ActivityCompat.requestPermissions(fragmentActivity,
+                                            new String[]{Manifest.permission.CAMERA},
+                                            PERMISSIONS_REQUEST_CAMERA);
+                                }
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -159,10 +155,6 @@ public class SetPermissionsActivity extends AppCompatActivity {
             }
 
             return builder.create();
-        }
-
-        public int getPermissionType() {
-            return mPermissionType;
         }
 
         public void setPermissionType(int mPermissionType) {

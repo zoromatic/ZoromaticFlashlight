@@ -24,12 +24,12 @@ import android.widget.LinearLayout.LayoutParams;
  * @author Casper Wakkers
  */
 public class ImageArrayAdapter extends ArrayAdapter<CharSequence> {
-    private int index = 0;
-    private int[] imageIds = null;
-    private int[] colorIds = null;
-    private String[] fontPaths = null;
-    private int[] batteryIds = null;
-    private int[] colorSchemeIds = null;
+    private int index;
+    private int[] imageIds;
+    private int[] colorIds;
+    private String[] fontPaths;
+    private int[] batteryIds;
+    private int[] colorSchemeIds;
 
     /**
      * ImageArrayAdapter constructor.
@@ -60,12 +60,12 @@ public class ImageArrayAdapter extends ArrayAdapter<CharSequence> {
         @SuppressLint("ViewHolder") View row = inflater.inflate(R.layout.listitem, parent, false);
 
         if (imageIds != null && imageIds.length > 0) {
-            ImageView imageView = (ImageView) row.findViewById(R.id.image);
+            ImageView imageView = row.findViewById(R.id.image);
             imageView.setImageResource(imageIds[position]);
         }
 
         if (batteryIds != null && batteryIds.length > 0) {
-            ImageView imageView = (ImageView) row.findViewById(R.id.image);
+            ImageView imageView = row.findViewById(R.id.image);
             imageView.setImageResource(batteryIds[position]);
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -78,7 +78,7 @@ public class ImageArrayAdapter extends ArrayAdapter<CharSequence> {
             }
         }
 
-        CheckedTextView checkedTextView = (CheckedTextView) row.findViewById(R.id.check);
+        CheckedTextView checkedTextView = row.findViewById(R.id.check);
         checkedTextView.setText(getItem(position));
 
         int[] attrs = new int[]{android.R.attr.textColorSecondary};
@@ -105,7 +105,7 @@ public class ImageArrayAdapter extends ArrayAdapter<CharSequence> {
         if (colorSchemeIds != null && colorSchemeIds.length > 0) {
             checkedTextView.setVisibility(View.GONE);
 
-            ImageView imageView = (ImageView) row.findViewById(R.id.image);
+            ImageView imageView = row.findViewById(R.id.image);
             imageView.requestLayout();
             imageView.getLayoutParams().width = LayoutParams.MATCH_PARENT;
             imageView.getLayoutParams().height = LayoutParams.MATCH_PARENT;
@@ -113,7 +113,7 @@ public class ImageArrayAdapter extends ArrayAdapter<CharSequence> {
             ColorDrawable cd = new ColorDrawable(getContext().getResources().getColor(colorSchemeIds[position]));
             imageView.setImageDrawable(cd);
 
-            ImageView imageViewCheck = (ImageView) row.findViewById(R.id.imageCheck);
+            ImageView imageViewCheck = row.findViewById(R.id.imageCheck);
             imageViewCheck.requestLayout();
             imageViewCheck.getLayoutParams().width = LayoutParams.MATCH_PARENT;
             imageViewCheck.getLayoutParams().height = LayoutParams.MATCH_PARENT;

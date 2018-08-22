@@ -61,41 +61,41 @@ class Preferences {
 
     static void setTheme(Context context, String value) {
         getPreferences(context).edit()
-                .putString(PREF_THEME + 0, value).commit();
+                .putString(PREF_THEME + 0, value).apply();
     }
 
     static void setColorScheme(Context context, int value) {
         getPreferences(context).edit()
-                .putInt(PREF_COLOR_SCHEME + 0, value).commit();
+                .putInt(PREF_COLOR_SCHEME + 0, value).apply();
     }
 
     static void setOrientation(Context context, String value) {
         getPreferences(context).edit()
-                .putString(PREF_ORIENTATION + 0, value).commit();
+                .putString(PREF_ORIENTATION + 0, value).apply();
     }
 
     static void setTurnOnOnOpen(Context context, boolean value) {
         getPreferences(context).edit()
-                .putBoolean(PREF_TURNONONOPEN + 0, value).commit();
+                .putBoolean(PREF_TURNONONOPEN + 0, value).apply();
     }
 
     static void setKeepStrobeFrequency(Context context, boolean value) {
         getPreferences(context).edit()
-                .putBoolean(PREF_KEEPSTROBEFREQ + 0, value).commit();
+                .putBoolean(PREF_KEEPSTROBEFREQ + 0, value).apply();
     }
 
     static void setStrobeFrequency(Context context, int value) {
         getPreferences(context).edit()
-                .putInt(PREF_STROBEFREQ + 0, value).commit();
+                .putInt(PREF_STROBEFREQ + 0, value).apply();
     }
 
     static void setKeepActive(Context context, boolean value) {
         getPreferences(context).edit()
-                .putBoolean(PREF_KEEPACTIVE + 0, value).commit();
+                .putBoolean(PREF_KEEPACTIVE + 0, value).apply();
     }
 
     static void setLanguageOptions(Context context, String value) {
         getPreferences(context).edit()
-                .putString(PREF_LANGUAGE_OPTIONS + 0, value).commit();
+                .putString(PREF_LANGUAGE_OPTIONS + 0, value).apply();
     }
 }

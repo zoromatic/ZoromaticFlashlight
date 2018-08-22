@@ -16,6 +16,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -38,7 +39,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
 
         setContentView(R.layout.activity_prefs);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         TypedValue outValue = new TypedValue();
@@ -106,6 +107,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -265,7 +267,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
         }
 
         @Override
-        public void onSaveInstanceState(Bundle savedInstanceState) {
+        public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
             super.onSaveInstanceState(savedInstanceState);
         }
 
@@ -405,7 +407,7 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
 

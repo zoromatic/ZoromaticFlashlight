@@ -158,6 +158,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         mHandler.removeCallbacks(mRunnable);
     }
 
+    @SuppressLint("SetTextI18n")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -344,7 +345,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                         if (turnOn) {
                             mToggleOn = true;
 
-                            button.setChecked(mToggleOn);
+                            button.setChecked(true);
                             seekBar.setEnabled(mToggleOn);
                         }
 
@@ -387,28 +388,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
             mToggleOn = false;
         }
     }
-
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
-
-    /*@SuppressLint("InlinedApi")
-    public void setStatusBarColor(View statusBar, int color) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-            statusBar.getLayoutParams().height = getStatusBarHeight();
-            statusBar.setBackgroundColor(color);
-        } else {
-            statusBar.setVisibility(View.GONE);
-        }
-    }*/
 
     @Override
     protected void onDestroy() {
@@ -802,6 +781,7 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         alertDialog.show();
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class CameraTask extends AsyncTask<Void, Void, OpenCamera> {
 
         @Override
@@ -878,8 +858,8 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     }
 
     private static class OpenCamera {
-        boolean cameraResult = false;
-        boolean cameraException = false;
+        boolean cameraResult;
+        boolean cameraException;
 
         OpenCamera(boolean result, boolean exception) {
             cameraResult = result;

@@ -17,6 +17,7 @@
 package com.zoromatic.flashlight;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,8 +27,10 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.app.FragmentActivity;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -99,7 +102,7 @@ public abstract class PreferenceFragment extends Fragment implements
     }
 
     @Override
-    public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup,
+    public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup,
                              Bundle paramBundle) {
         return paramLayoutInflater.inflate(R.layout.preference_list_fragment, paramViewGroup,
                 false);
@@ -154,7 +157,7 @@ public abstract class PreferenceFragment extends Fragment implements
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
@@ -203,17 +206,6 @@ public abstract class PreferenceFragment extends Fragment implements
      */
     public PreferenceScreen getPreferenceScreen() {
         return PreferenceManagerCompat.getPreferenceScreen(mPreferenceManager);
-    }
-
-    /**
-     * Adds preferences from activities that match the given {@link Intent}.
-     *
-     * @param intent The {@link Intent} to query activities.
-     */
-    public void addPreferencesFromIntent(Intent intent) {
-        requirePreferenceManager();
-
-        setPreferenceScreen(PreferenceManagerCompat.inflateFromIntent(mPreferenceManager, intent, getPreferenceScreen()));
     }
 
     /**
@@ -279,35 +271,6 @@ public abstract class PreferenceFragment extends Fragment implements
                 }
             }
         }
-
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD_MR1) {
-            // Workaround android bug for SDK 10 and below - see
-            // https://github.com/android/platform_frameworks_base/commit/2d43d283fc0f22b08f43c6db4da71031168e7f59
-            getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    // If the list has headers, subtract them from the index.
-                    if (parent instanceof ListView) {
-                        position -= ((ListView) parent).getHeaderViewsCount();
-                    }
-
-                    Object item = preferenceScreen != null ? preferenceScreen.getRootAdapter().getItem(position) : null;
-                    if (!(item instanceof Preference))
-                        return;
-
-                    final Preference preference = (Preference) item;
-                    try {
-                        Method performClick = Preference.class.getDeclaredMethod(
-                                "performClick", PreferenceScreen.class);
-                        performClick.setAccessible(true);
-                        performClick.invoke(preference, preferenceScreen);
-                    } catch (InvocationTargetException e) {
-                    } catch (IllegalAccessException e) {
-                    } catch (NoSuchMethodException e) {
-                    }
-                }
-            });
-        }
     }
 
     public ListView getListView() {
@@ -352,14 +315,18 @@ public abstract class PreferenceFragment extends Fragment implements
             return;
 
         TypedValue outValue = new TypedValue();
-        getActivity().getTheme().resolveAttribute(R.attr.colorAccent, outValue, true);
-        int color = outValue.resourceId;
-        int colorAccent = getActivity().getResources().getColor(color);
+        FragmentActivity fragmentActivity = getActivity();
 
-        ImageView image = (ImageView) view.findViewById(android.R.id.icon);
+        if (fragmentActivity != null) {
+            fragmentActivity.getTheme().resolveAttribute(R.attr.colorAccent, outValue, true);
+            int color = outValue.resourceId;
+            int colorAccent = getActivity().getResources().getColor(color);
 
-        if (image != null) {
-            image.setColorFilter(colorAccent);
+            ImageView image = view.findViewById(android.R.id.icon);
+
+            if (image != null) {
+                image.setColorFilter(colorAccent);
+            }
         }
     }
 

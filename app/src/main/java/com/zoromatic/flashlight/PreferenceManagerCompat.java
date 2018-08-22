@@ -103,32 +103,6 @@ public class PreferenceManagerCompat {
     }
 
     /**
-     * Inflates a preference hierarchy from the preference hierarchies of
-     * {@link Activity Activities} that match the given {@link Intent}. An
-     * {@link Activity} defines its preference hierarchy with meta-data using
-     * the {@link #METADATA_KEY_PREFERENCES} key.
-     * <p>
-     * If a preference hierarchy is given, the new preference hierarchies will
-     * be merged in.
-     *
-     * @param intent     The intent to match activities.
-     * @param screen Optional existing hierarchy to merge the new
-     *                        hierarchies into.
-     * @return The root hierarchy (if one was not provided, the new hierarchy's
-     * root).
-     */
-    static PreferenceScreen inflateFromIntent(PreferenceManager manager, Intent intent, PreferenceScreen screen) {
-        try {
-            Method m = PreferenceManager.class.getDeclaredMethod("inflateFromIntent", Intent.class, PreferenceScreen.class);
-            m.setAccessible(true);
-            return (PreferenceScreen) m.invoke(manager, intent, screen);
-        } catch (Exception e) {
-            Log.w(TAG, "Couldn't call PreferenceManager.inflateFromIntent by reflection", e);
-        }
-        return null;
-    }
-
-    /**
      * Inflates a preference hierarchy from XML. If a preference hierarchy is
      * given, the new preference hierarchies will be merged in.
      *
