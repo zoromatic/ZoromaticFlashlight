@@ -210,15 +210,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         setSupportActionBar(toolbar);
         initDrawer();
 
-        /*TypedValue outValue = new TypedValue();
-        getTheme().resolveAttribute(R.attr.colorPrimary,
-                outValue,
-                true);
-        int primaryColor = outValue.resourceId;
-
-        setStatusBarColor(findViewById(R.id.statusBarBackground),
-                getResources().getColor(primaryColor));*/
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name);
@@ -254,13 +245,12 @@ public class FlashlightActivity extends ThemeActionBarActivity {
         button = findViewById(R.id.togglebutton);
         if (button != null) {
             button.setChecked(false);
-            button.setOnClickListener(new View.OnClickListener() {
-
+            /*button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onToggleClicked(v);
                 }
-            });
+            });*/
         }
 
         seekBar = findViewById(R.id.seekBarStrobe);
@@ -354,8 +344,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                         if (keepStrobe) {
                             mStrobeFrequency = Preferences.getStrobeFrequency(context);
                             seekBar.setProgress(mStrobeFrequency);
-
-                            //startStrobe(seekBar.getProgress());
                         }
                     } else {
                         Intent localIntent = getIntent();
@@ -368,13 +356,8 @@ public class FlashlightActivity extends ThemeActionBarActivity {
                             button.setChecked(mToggleOn);
                             seekBar.setEnabled(mToggleOn);
                             seekBar.setProgress(mStrobeFrequency);
-
-                            //startStrobe(seekBar.getProgress());
                         }
                     }
-
-                    //if (camera == null)
-                    //    new CameraTask().execute();
                 }
             }
         } catch (Exception e) {
