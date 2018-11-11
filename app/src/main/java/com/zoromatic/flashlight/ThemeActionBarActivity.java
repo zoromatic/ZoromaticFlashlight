@@ -15,9 +15,9 @@ import android.view.View;
 public class ThemeActionBarActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
-        setCustomTheme();
-
         super.onCreate(savedInstanceState);
+
+        setCustomTheme();
 
         String lang = Preferences.getLanguageOptions(this);
 
@@ -43,9 +43,9 @@ public class ThemeActionBarActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        setCustomTheme();
-
         super.onResume();
+
+        setCustomTheme();
     }
 
     public void setCustomTheme() {
