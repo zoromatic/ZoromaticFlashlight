@@ -72,7 +72,7 @@
     <string name="grey">Grey</string>
     <string name="blue_grey">Blue Grey</string>
 
-    <string name="title_activity_set_permissions">SetPermissions</string>
+    <string name="title_activity_set_permissions">Set Permissions</string>
     <string name="permission_request">Permissions request.</string>
     <string name="permission_needed_camera">Permissions needed to access camera for turning flashlight on and off.</string>
 

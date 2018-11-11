@@ -71,5 +71,13 @@
     <string name="brown">Коричневый</string>
     <string name="grey">Серый</string>
     <string name="blue_grey">Синий-серый</string>
+
+    <string name="title_activity_set_permissions">Установить разрешения</string>
+    <string name="permission_request">Запрос разрешений.</string>
+    <string name="permission_needed_camera">Разрешения, необходимые для доступа к камере для включения и выключения фонарика.</string>
+
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="notification_channel">Канал уведомлений</string>
+    <string name="notification_channel_id">notification_channel_id</string>
     
 </resources>

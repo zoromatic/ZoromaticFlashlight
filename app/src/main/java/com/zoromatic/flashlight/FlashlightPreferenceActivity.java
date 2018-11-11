@@ -341,6 +341,13 @@ public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
                         else
                             Preferences.setLanguageOptions(context, "en");
 
+                        // Change locale settings in the application
+                        Resources res = context.getResources();
+                        DisplayMetrics dm = res.getDisplayMetrics();
+                        android.content.res.Configuration conf = res.getConfiguration();
+                        conf.locale = new Locale(mLanguage.getValue().toLowerCase());
+                        res.updateConfiguration(conf, dm);
+
                         Intent intent = getActivity().getIntent();
                         getActivity().finish();
                         getActivity().startActivity(intent);
