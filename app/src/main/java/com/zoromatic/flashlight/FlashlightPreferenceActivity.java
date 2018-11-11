@@ -30,7 +30,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 @SuppressLint("NewApi")
-public class FlashlightPreferenceActivity extends ThemeActionBarActivity {
+public class FlashlightPreferenceActivity extends ThemeAppCompatActivity {
     SettingsFragment mSettingsFragment = null;
 
     @Override

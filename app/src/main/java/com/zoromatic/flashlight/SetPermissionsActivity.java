@@ -13,9 +13,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 
-public class SetPermissionsActivity extends AppCompatActivity {
+public class SetPermissionsActivity extends ThemeAppCompatActivity {
     public static final String PERMISSIONS_TYPE = "PERMISSIONS_TYPE";
     public static final int PERMISSIONS_REQUEST_CAMERA = 1;
     private int mPermissionType = -1;

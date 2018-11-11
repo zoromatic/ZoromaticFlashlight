@@ -2,7 +2,6 @@ package com.zoromatic.flashlight;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -25,14 +24,12 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -48,7 +45,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 @SuppressWarnings("deprecation")
-public class FlashlightActivity extends ThemeActionBarActivity {
+public class FlashlightActivity extends ThemeAppCompatActivity {
 
     public static final int REQUEST_CODE_DANGEROUS_PERMISSIONS = 100;
     private static final int ACTIVITY_SETTINGS = 200;
@@ -163,26 +160,6 @@ public class FlashlightActivity extends ThemeActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        String lang = Preferences.getLanguageOptions(this);
-
-        if (lang.equals("")) {
-            String langDef = Locale.getDefault().getLanguage();
-
-            if (!langDef.equals(""))
-                lang = langDef;
-            else
-                lang = "en";
-
-            Preferences.setLanguageOptions(this, lang);
-        }
-
-        // Change locale settings in the application
-        Resources res = getApplicationContext().getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        android.content.res.Configuration conf = res.getConfiguration();
-        conf.locale = new Locale(lang.toLowerCase());
-        res.updateConfiguration(conf, dm);
 
         mSavedState = savedInstanceState;
 

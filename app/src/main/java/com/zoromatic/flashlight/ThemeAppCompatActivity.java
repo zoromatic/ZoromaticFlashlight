@@ -12,7 +12,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 @SuppressLint("Registered")
-public class ThemeActionBarActivity extends AppCompatActivity {
+public class ThemeAppCompatActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class ThemeActionBarActivity extends AppCompatActivity {
         }
 
         // Change locale settings in the application
-        Resources res = getApplicationContext().getResources();
+        Resources res = getBaseContext().getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
         conf.locale = new Locale(lang.toLowerCase());
