@@ -80,4 +80,7 @@
     <string name="notification_channel">Notification Channel</string>
     <string name="notification_channel_id">notification_channel_id</string>
 
+    <string name="tap_turn_on">TAP HERE TO TURN ON</string>
+    <string name="tap_turn_off">TAP HERE TO TURN OFF</string>
+
 </resources>

@@ -25,7 +25,7 @@
         android:src="@drawable/check_mark"
         android:visibility="gone" />
 
-    <android.support.v7.widget.AppCompatCheckedTextView
+    <androidx.appcompat.widget.AppCompatCheckedTextView
         android:id="@+id/check"
         android:checkMark="?android:attr/listChoiceIndicatorSingle"
         android:layout_width="match_parent"

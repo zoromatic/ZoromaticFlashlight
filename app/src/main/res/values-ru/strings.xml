@@ -79,5 +79,8 @@
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="notification_channel">Канал уведомлений</string>
     <string name="notification_channel_id">notification_channel_id</string>
+
+    <string name="tap_turn_on">НАЖМИТЕ ЗДЕСЬ, ЧТОБЫ ВКЛЮЧИТЬ</string>
+    <string name="tap_turn_off">НАЖМИТЕ ЗДЕСЬ, ЧТОБЫ ВЫКЛЮЧИТЬ</string>
     
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:widgets="http://schemas.android.com/apk/res/com.zoromatic.flashlight"
+    xmlns:widgets="http://schemas.android.com/apk/res-auto"
     android:key="com.zoromatic.flashlight.Preferences" >
 
     <!-- <PreferenceCategory android:title="@string/action_settings" > -->
