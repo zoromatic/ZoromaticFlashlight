@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">?attr/colorPrimary</item>
         <item name="colorAccent">?attr/colorPrimary</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
     </style>
 
     <style name="AlertDialogLight" parent="Theme.AppCompat.Light.Dialog">
@@ -14,7 +14,7 @@
         <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
         <item name="colorAccent">?attr/colorPrimaryDark</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
     </style>
 
     <style name="ToolbarLightBlack" parent="Widget.AppCompat.Toolbar">

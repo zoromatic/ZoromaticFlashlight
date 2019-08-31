@@ -79,8 +79,5 @@
     <string name="privacy_policy">Política de privacidad</string>
     <string name="notification_channel">Canal de notificaciones</string>
     <string name="notification_channel_id">notification_channel_id</string>
-
-    <string name="tap_turn_on">TOQUE AQUÍ PARA ENCENDER</string>
-    <string name="tap_turn_off">TOQUE AQUÍ PARA APAGAR</string>
     
 </resources>
